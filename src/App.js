@@ -1,4 +1,5 @@
 import logo from './logo.png';
+import ig from './instagram.svg';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <p>
           SIGUENOS EN NUESTRAS REDES
         </p>
+        <img src={ig} className="App-ig" alt="instagram" />
       </header>
     </div>
   );
