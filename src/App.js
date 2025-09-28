@@ -9,14 +9,9 @@ function App() {
         <p>
           CB LIMA LIMÓN
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <p>
           SIGUENOS EN NUESTRAS REDES
-        </a>
+        </p>
       </header>
     </div>
   );
