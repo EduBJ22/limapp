@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="../public/logo.png" className="App-logo" alt="logo" />
+        <img src="../public/logo.png" alt="logo" />
         <p>
           CB LIMA LIMÓN
         </p>
