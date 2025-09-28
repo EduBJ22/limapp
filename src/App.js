@@ -1,5 +1,5 @@
 import logo from './logo.png';
-import ig from './instagram.svg';
+import ig from './instagram.svg.webp';
 import './App.css';
 
 function App() {
@@ -11,9 +11,11 @@ function App() {
           CB LIMA LIMÓN
         </p>
         <p>
-          SIGUENOS EN NUESTRAS REDES
+          SIGUENOS EN INSTAGRAM
         </p>
-        <img src={ig} className="App-ig" alt="instagram" />
+        <a href="https://www.instagram.com/limalimonsd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src={ig} className="App-ig" alt="instagram" />
+        </a>
       </header>
     </div>
   );
