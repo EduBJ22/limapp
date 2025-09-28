@@ -27,8 +27,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px 20px;
+  gap: 28px; /* más separación entre left / nav / right */
+  padding: 12px 28px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
@@ -69,7 +69,8 @@
 
 .App-nav {
   display: flex;
-  gap: 16px;
+  gap: 28px; /* más separación entre apartados del nav */
+  align-items: center;
 }
 
 .App-nav-link {
@@ -86,6 +87,7 @@
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.95rem; /* unificar tamaño de letra en todo el footer */
 }
 
 .App-footer-left {
@@ -113,9 +115,9 @@
 }
 
 .App-ig {
-  width: 72px;
-  height: 72px;
-  margin-top: 12px;
+  width: 40px; /* logo de instagram más pequeño */
+  height: 40px;
+  margin-top: 0;
   cursor: pointer;
   transition: transform 180ms ease, opacity 180ms ease;
 }

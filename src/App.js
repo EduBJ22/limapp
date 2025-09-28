@@ -12,7 +12,7 @@ function App() {
         </div>
 
         <nav className="App-nav" aria-label="Secciones">
-          <a href="#quienes" className="App-nav-link">¿Quienes somos?</a>
+          <a href="#quienes" className="App-nav-link">¿Quiénes somos?</a>
           <a href="#jugadores" className="App-nav-link">Jugadores</a>
           <a href="#patrocinadores" className="App-nav-link">Patrocinadores</a>
         </nav>
