@@ -317,6 +317,47 @@
             margin-top: 8px;
             overflow-x: auto; /* permite scroll horizontal en pantallas pequeñas */
         }
+        
+            /* Estilos para la tabla completa de estadísticas */
+            .players-stats-full {
+                background-color: var(--negro);
+                padding: 40px 0;
+            }
+        
+            .players-stats-full .players-stats-table table {
+                width: 100%;
+                border-collapse: collapse;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            /* Centrar la tabla y limitar su ancho para mejor presentación */
+            .players-stats-full .players-stats-table {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+        
+            .players-stats-full th, .players-stats-full td {
+                padding: 12px 10px;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.04);
+                color: var(--texto);
+            }
+        
+            .players-stats-full th {
+                background: rgba(212,175,55,0.12);
+                color: var(--dorado);
+                font-weight: 700;
+            }
+
+            /* Asegurar que todos los números (td) en las tablas queden centrados */
+            .players-stats-full td,
+            .player-stats td,
+            .player-stats .matches-table td {
+                text-align: center;
+                vertical-align: middle;
+            }
 
         .player-stats table {
             width: 100%;
@@ -469,6 +510,37 @@
         .matches-table tr:hover {
             background-color: rgba(212, 175, 55, 0.1);
         }
+
+        /* Controles de partidos */
+        .matches-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start; /* alinear a la izquierda */
+            margin-bottom: 12px;
+        }
+
+        /* Botones de control: borde más visible (blanco suave) para destacar */
+        .toggle-btn {
+            background: transparent;
+            color: var(--texto);
+            border: 2px solid rgba(255,255,255,0.16); /* borde más grueso y visible */
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 0 rgba(255,255,255,0.02) inset;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2), 0 0 0 3px rgba(255,255,255,0.02) inset;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(to right, var(--dorado), var(--dorado-claro));
+            color: var(--negro);
+            border-color: rgba(255,255,255,0.9); /* borde blanco cuando está activo */
+            box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+        }
         
         .match-result {
             font-weight: bold;
@@ -617,6 +689,46 @@
             color: var(--negro);
             transform: translateY(-3px);
         }
+
+        /* Patrocinadores (logos) en el footer */
+        .footer-social .sponsors {
+            margin-top: 16px;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .sponsor-logos a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            background: transparent;
+            border-radius: 6px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            text-decoration: none;
+        }
+
+        .sponsor-logos img {
+            width: 80px;
+            height: auto;
+            display: block;
+            filter: grayscale(0.0) saturate(0.9);
+        }
+
+        .sponsor-logos a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+        }
+
+        @media (max-width: 480px) {
+            .sponsor-logos img { width: 60px; }
+        }
         
         .copyright {
             text-align: center;
@@ -739,25 +851,6 @@
                         <h3>Maxwell</h3>
                         <div class="player-position">Delantero</div>
                         <p>Goleador histórico del equipo.</p>
-                        <button class="btn stats-toggle" data-target="maxwell-stats">Ver estadísticas</button>
-                        <div id="maxwell-stats" class="player-stats" style="display:none; margin-top:12px;">
-                            <table class="matches-table" style="width:100%;">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Pretemporada</th>
-                                        <th>2025</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><th>Partidos</th><td>10</td><td>10</td></tr>
-                                    <tr><th>Goles</th><td>8</td><td>8</td></tr>
-                                    <tr><th>Asistencias</th><td>2</td><td>2</td></tr>
-                                    <tr><th>Tarjetas amarillas</th><td>3</td><td>3</td></tr>
-                                    <tr><th>Tarjetas rojas</th><td>1</td><td>1</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
                 <div class="player-card">
@@ -824,14 +917,45 @@
         </div>
     </section>
 
+    <!-- Tabla completa de estadísticas de jugadores -->
+    <section class="players-stats-full">
+        <div class="container">
+            <div class="section-title">
+                <h2>Estadísticas</h2>
+            </div>
+            <table class="matches-table">
+                <thead>
+                        <tr>
+                            <th>Jugador</th>
+                            <th>Partidos</th>
+                            <th>Goles</th>
+                            <th>Asistencias</th>
+                            <th>Tarjetas Amarillas</th>
+                            <th>Tarjetas Rojas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Maxwell</td><td>10</td><td>8</td><td>2</td><td>10</td><td>8</td></tr>
+                        <tr><td>Pablo Dominguez</td><td>10</td><td>8</td><td>2</td><td>10</td><td>8</td></tr>
+                        <tr><td>Miguel Torres</td><td>12</td><td>1</td><td>0</td><td>12</td><td>1</td></tr>
+                        <tr><td>Nacho Acero</td><td>8</td><td>0</td><td>0</td><td>8</td><td>0</td></tr>
+                    </tbody>
+            </table>
+        </div>
+    </section>
+
     <!-- Partidos -->
     <section id="partidos" class="matches">
         <div class="container">
             <div class="section-title">
-                <h2>Próximos Partidos</h2>
-                <p>No te pierdas nuestros próximos encuentros de élite</p>
+                <h2>Partidos</h2>
             </div>
-            <table class="matches-table">
+
+            <div class="matches-controls">
+                <button id="toggle-upcoming" class="btn toggle-btn active" aria-pressed="true">Mostrar Próximos</button>
+                <button id="toggle-results" class="btn toggle-btn" aria-pressed="false">Mostrar Resultados</button>
+            </div>
+            <table id="upcoming-table" class="matches-table">
                 <thead>
                     <tr>
                         <th>Fecha</th>
@@ -864,6 +988,31 @@
                         <td>Leones del Sur vs. Lima Limón FC</td>
                         <td>Complejo Deportivo Sur</td>
                         <td>16:30</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Tabla de resultados (oculta por defecto) -->
+            <table id="results-table" class="matches-table" style="display:none; margin-top:16px;">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Partido</th>
+                        <th>Resultado</th>
+                        <th>Lugar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01 Sep 2023</td>
+                        <td>Lima Limón FC vs. Halcones</td>
+                        <td class="match-result">3 - 1</td>
+                        <td>Estadio Municipal</td>
+                    </tr>
+                    <tr>
+                        <td>08 Sep 2023</td>
+                        <td>Toros FC vs. Lima Limón FC</td>
+                        <td class="match-result">1 - 2</td>
+                        <td>Campo Deportivo Norte</td>
                     </tr>
                 </tbody>
             </table>
@@ -963,6 +1112,14 @@
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
+                    <div class="sponsors">
+                        <h4>Patrocinadores</h4>
+                        <div class="sponsor-logos">
+                            <a href="#" title="Café Bar Lima Limón"><img src="logo1.png" alt="Café Bar Lima Limón"></a>
+                            <a href="#" title="Patrocinador 2"><img src="logo2.png" alt="Patrocinador 2"></a>
+                            <a href="#" title="Patrocinador 3"><img src="logo3.png" alt="Patrocinador 3"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
@@ -1002,15 +1159,66 @@
             });
         });
 
-        // Toggle estadísticas de jugador
+        // Toggle estadísticas de jugador (por tarjeta)
         document.querySelectorAll('.stats-toggle').forEach(btn => {
             btn.addEventListener('click', () => {
-                const target = document.getElementById(btn.dataset.target);
+                const card = btn.closest('.player-card');
+                if (!card) return;
+                const target = card.querySelector('.player-stats') || document.getElementById(btn.dataset.target);
                 if (!target) return;
-                target.style.display = target.style.display === 'none' ? 'block' : 'none';
-                btn.textContent = target.style.display === 'none' ? 'Ver estadísticas' : 'Ocultar estadísticas';
+                const isHidden = target.style.display === 'none' || getComputedStyle(target).display === 'none';
+                target.style.display = isHidden ? 'block' : 'none';
+                btn.textContent = isHidden ? 'Ocultar estadísticas' : 'Ver estadísticas';
             });
         });
+
+        // Botones para alternar entre Próximos y Resultados (siempre debe verse una tabla)
+        (function() {
+            const btnUpcoming = document.getElementById('toggle-upcoming');
+            const btnResults = document.getElementById('toggle-results');
+            const upcomingTable = document.getElementById('upcoming-table');
+            const resultsTable = document.getElementById('results-table');
+            if (!btnUpcoming || !btnResults || !upcomingTable || !resultsTable) return;
+
+            // Estado inicial: mostrar Próximos
+            upcomingTable.style.display = 'table';
+            resultsTable.style.display = 'none';
+            btnUpcoming.classList.add('active');
+            btnUpcoming.setAttribute('aria-pressed', 'true');
+            btnResults.classList.remove('active');
+            btnResults.setAttribute('aria-pressed', 'false');
+            btnUpcoming.textContent = 'Mostrar Próximos';
+            btnResults.textContent = 'Mostrar Resultados';
+
+            function showUpcoming() {
+                upcomingTable.style.display = 'table';
+                resultsTable.style.display = 'none';
+                btnUpcoming.classList.add('active');
+                btnUpcoming.setAttribute('aria-pressed', 'true');
+                btnResults.classList.remove('active');
+                btnResults.setAttribute('aria-pressed', 'false');
+            }
+
+            function showResults() {
+                resultsTable.style.display = 'table';
+                upcomingTable.style.display = 'none';
+                btnResults.classList.add('active');
+                btnResults.setAttribute('aria-pressed', 'true');
+                btnUpcoming.classList.remove('active');
+                btnUpcoming.setAttribute('aria-pressed', 'false');
+            }
+
+            btnUpcoming.addEventListener('click', () => {
+                // Si ya está visible, no hacemos nada (mantenemos una tabla visible)
+                if (getComputedStyle(upcomingTable).display !== 'none') return;
+                showUpcoming();
+            });
+
+            btnResults.addEventListener('click', () => {
+                if (getComputedStyle(resultsTable).display !== 'none') return;
+                showResults();
+            });
+        })();
     </script>
 </body>
 </html>
